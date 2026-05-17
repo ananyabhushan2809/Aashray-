@@ -67,8 +67,23 @@ def admin_required(fn):
 
 
 # ============================================================
+#                       ROOT ROUTE
+# ============================================================
+
+@app.route('/', methods=['GET'])
+def home():
+    """Health check endpoint for root URL."""
+    return jsonify({
+        "status": "online",
+        "service": "Smart Hostel Management Portal API",
+        "version": "1.0.0"
+    }), 200
+
+
+# ============================================================
 #                       AUTH ROUTES
 # ============================================================
+
 
 @app.route('/api/auth/register', methods=['POST'])
 def register():
